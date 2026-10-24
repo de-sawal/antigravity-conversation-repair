@@ -1,19 +1,10 @@
 #!/usr/bin/env python3
-"""Antigravity Conversation Repair — single-file, standard-library recovery helper.
-
+"""
 Repairs the two Antigravity IDE conversation indices in state.vscdb:
   * chat.ChatSessionStore.index (JSON)
   * antigravityUnifiedStateSync.trajectorySummaries (Base64-wrapped Protobuf)
 
-Safety design:
-  * dry-run by default; writes require --apply
-  * best-effort running-process checks on Linux, macOS and Windows; quit the IDE manually first
-  * makes and validates a SQLite-consistent backup before the first write
-  * uses one SQLite transaction and rechecks for concurrent database changes
-  * preserves unrelated Protobuf entries byte-for-byte and never prunes JSON entries
-  * only repairs workspace metadata that is absent, incomplete, or malformed
-
-Python 3.10+; no third-party dependencies.
+Python 3.10+ only; no third-party dependencies. so no pip install required
 """
 from __future__ import annotations
 
